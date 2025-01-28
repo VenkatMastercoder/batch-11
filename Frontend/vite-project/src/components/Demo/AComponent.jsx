@@ -1,5 +1,5 @@
 import { useState } from "react"
-import BComponent from "./bComponent";
+import BComponent from "./BComponent";
 
 const AComponent = () => {
 
