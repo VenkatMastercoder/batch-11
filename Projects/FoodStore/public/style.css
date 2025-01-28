@@ -1,0 +1,6 @@
+.bg-hero-section {
+  background-image: url('https://ik.imagekit.io/4z8covdo9/MERN-COURSE-ASSETS/FOOD-STORE/foodmunch-banner-bg.png');
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

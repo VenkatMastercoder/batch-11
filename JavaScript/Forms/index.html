@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!--FireBase SDK-->
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+
+<body>
+
+  <form id="form">
+    <div>
+      <label for="mail">Email</label>
+      <input id="mail" />
+      <p id="mailError" class="text-red-500"></p>
+    </div>
+
+    <div>
+      <label for="pass">Password</label>
+      <input id="pass" />
+      <p id="passError" class="text-red-500"></p>
+    </div>
+
+    <button>Submit</button>
+  </form>
+
+  <script>
+    const mailElement = document.getElementById("mail");
+    const passwordElement = document.getElementById("pass");
+
+    const mailErrorElement = document.getElementById("mailError");
+    const passwordErrorElement = document.getElementById("passError");
+
+    const formElement = document.getElementById("form");
+
+    const vaildateData = (email, password) => {
+
+      console.log("Data from Vaildation Function:", email, password)
+
+      let isVaild = true
+
+      const emailRegex = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+
+      if (!email.match(emailRegex)) {
+        console.log("Invaild Email");
+        mailErrorElement.textContent = "Invaild Email Id. Please Enter A Vaild Email"
+        isVaild = false
+      } else {
+        mailElement.textContent = ""
+      }
+
+      if (password.length < 2) {
+        passwordErrorElement.textContent = "Min 2 Character Required"
+        isVaild = false
+      } else {
+        passwordElement.textContent = ""
+      }
+
+      return isVaild
+    }
+
+    const saveData = (email, password) => {
+      console.log("Data from Save Function:", email, password)
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyC9OMk49EiIU42YkajHaculYYmxAto_EEI",
+        authDomain: "mern-batch-4.firebaseapp.com",
+        databaseURL: "https://mern-batch-4-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "mern-batch-4",
+        storageBucket: "mern-batch-4.firebasestorage.app",
+        messagingSenderId: "488838727047",
+        appId: "1:488838727047:web:40ff363e182af08757ff22"
+      };
+
+      if(!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+      } else {
+        firebase.app()
+      }
+
+      const db = firebase.database().ref("ReqForm");
+
+      db.push({
+        email: email,
+        password: password
+      });
+    }
+
+    formElement.addEventListener("submit", (e) => {
+
+      e.preventDefault() // This will Prevent the Form Reloading
+
+      // Step - 1 : Get user Tying Data 
+      const email = mailElement.value
+      const password = passwordElement.value
+
+      // Step - 2 : Custom Vaildation 
+      const res = vaildateData(email, password)
+
+      // Step - 3 : Save Data
+      if (res) {
+        saveData(email, password)
+      }
+    })
+  </script>
+
+</body>
+
+</html>

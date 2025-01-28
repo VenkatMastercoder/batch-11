@@ -1,0 +1,17 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "parcel build index.html"
+  },
+  "author": "Venkat",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.13.3"
+  }
+}

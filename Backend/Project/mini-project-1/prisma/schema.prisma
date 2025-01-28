@@ -1,0 +1,35 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Student {
+  roll_no String @id
+  name String
+  blood_group String
+
+  proof Proof? // 1-1
+  payment Payment[] // 1-m
+}
+
+model Proof {
+  proof_id String @id
+  proof_type String
+  proof_link String
+
+  roll_no String @unique
+  student Student @relation(fields: [roll_no], references: [roll_no])
+}
+
+model Payment {
+  payment_id String @id
+  bank_name String
+  payment_amount String
+
+  roll_no String
+  student Student @relation(fields:[roll_no],references:[roll_no])
+}

@@ -1,0 +1,10 @@
+.heading {
+  color: green;
+  font-family: serif;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: underline;
+  text-transform: uppercase;
+}

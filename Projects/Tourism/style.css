@@ -1,0 +1,14 @@
+.bg-home {
+  background-image: url('https://ik.imagekit.io/4z8covdo9/MERN-COURSE-ASSETS/TOURISM-PROJECT/sea-ocean');
+  height: 500px;
+  width: 250px;
+  background-size: cover;
+}
+
+.bg-places {
+  background-image: url('https://ik.imagekit.io/4z8covdo9/MERN-COURSE-ASSETS/TOURISM-PROJECT/taj-mahal');
+  height: 600px;
+  width: 300px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

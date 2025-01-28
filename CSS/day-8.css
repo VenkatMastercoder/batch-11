@@ -1,0 +1,12 @@
+.para {
+  margin: 50px;
+  padding: 50px;
+  border: 5px;
+  border-style: solid;
+  border-color: aqua;
+  border-radius: 15px;
+  background-color: blueviolet;
+  color: aqua;
+
+  background-image: url('https://m.media-amazon.com/images/I/61Rx9tHudUL.jpg');
+}
